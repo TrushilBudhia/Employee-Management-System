@@ -28,4 +28,4 @@ CREATE TABLE employeesDB.employee (
 INSERT INTO employeesDB.employee (first_name, last_name, role_id, manager_id)
 VALUES ("Test", "Code", 1, 15); 
 
-SELECT * FROM employee LIMIT 100;
+SELECT * FROM employeesDB.employee LIMIT 100;
