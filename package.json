@@ -1,11 +1,11 @@
 {
-  "name": "employee-tracker",
+  "name": "employee-management-system",
   "version": "1.0.0",
   "description": "An application to manage an organisations employees",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node employee-db-connection.js",
+    "start": "node index.js",
+    "test": "jest --watch",
     "watch": "nodemon server.js"
   },
   "repository": {
@@ -21,8 +21,10 @@
   "homepage": "https://github.com/TrushilBudhia/Employee-Tracker#readme",
   "dependencies": {
     "console.table": "^0.10.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "inquirer": "^8.0.0",
+    "jest": "^26.6.3",
     "mysql2": "^2.2.5"
   },
   "devDependencies": {

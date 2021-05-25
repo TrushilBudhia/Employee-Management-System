@@ -38,6 +38,7 @@ const employeeQuestions = [
         message: 'Who is the employee\'s manager?',
         name: 'employeeManager',
         choices: [
+            'None',
             'Carah Sonner',
             'Cara Lroft',
             'Eatniss Kverdeen',
