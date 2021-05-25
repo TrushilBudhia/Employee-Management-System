@@ -12,11 +12,29 @@ async function menuResponse (actionSelected, connection) {
             case 'View All Employees By Manager':
                 await viewAllEmployeesByManager();
                 break;
+            case 'View All Roles':
+                await viewAllRoles();
+                break;
+            case 'View Total Utilized Budget of Department':
+                await viewAllRoles();
+                break;
             case 'Add Employee':
                 await addEmployee(connection);
                 break;
+            case 'Add Department':
+                await addDepartment();
+                break;
+            case 'Add Role':
+                await addRole();
+                break;
             case 'Remove Employee':
                 await removeEmployee();
+                break;
+            case 'Remove Department':
+                await removeDepartment();
+                break;
+            case 'Remove Role':
+                await removeRole();
                 break;
             case 'Update Employee Role':
                 await updateEmployeeRole();

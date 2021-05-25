@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const employeeQuestions = require('./add-employee-questions');
+const employeeQuestions = require('./employee-questions');
 
 async function addEmployee(connection) {
     try {
@@ -16,7 +16,7 @@ async function addEmployee(connection) {
                         manager_id: Number(101)
                     }
                 )
-                console.log("Log Employee", employeeInsert[0]);
+                console.log("Result:", employeeInsert[0]);
                 console.log('Employee has been added.');
                 connection.end();
             }

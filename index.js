@@ -1,6 +1,6 @@
 require('dotenv').config();
 const mysql = require('mysql2/promise');
-const questions = require('./js/main-menu-selection');
+const questions = require('./js/main-menu-questions');
 const { menuResponse } = require('./js/menu-response');
 
 async function init () {
