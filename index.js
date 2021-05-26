@@ -10,6 +10,7 @@ const deleteMenuOptions = require('./js/questions-delete-menu');
 const employeeQuestions = require('./js/questions-add-employee');
 const departmentQuestions = require('./js/questions-add-department');
 const roleQuestions = require('./js/questions-add-role');
+const { viewEmployeesByDepartmentQuestions, viewEmployeesByManagerQuestions, viewEmployeesByRoleQuestions } = require('./js/questions-view-all-employees');
 const addEmployee = require('./js/add-employee');
 const addDepartment = require('./js/add-department');
 const addRole = require('./js/add-role');
@@ -27,14 +28,14 @@ async function promptQuestions(connection, questions, functionToCall) {
     init();
 }
 
-async function requestToViewAllEmployees(connection) {
+async function getResults(connection, promptFunction) {
     try {
-        await viewAllEmployees(connection);
+        await promptFunction(connection);
     }
     catch (error) {
         console.error(`Inquirer has failed: ${error}`);
     }
-    init();
+    await init();
 }
 
 async function menuResponse(actionSelected, connection) {
@@ -68,16 +69,16 @@ async function menuResponse(actionSelected, connection) {
                 await promptQuestions(connection, updateEmployeeManagerQuestions, updateEmployeeManager);
                 break;
             case 'View All Employees':
-                await requestToViewAllEmployees(connection);
+                await getResults(connection, viewAllEmployees);
                 break;
             case 'View All Employees By Department':
-                await promptQuestions(connection, viewEmployeesByDepartmentQuestions, viewEmployeesByDepartment);
+                await getResults(connection, viewEmployeesByDepartmentQuestions);
                 break;
             case 'View All Employees By Manager':
-                await promptQuestions(connection, viewEmployeesByManagerQuestions, viewEmployeesByManager);
+                await getResults(connection, viewEmployeesByManagerQuestions);
                 break;
             case 'View All Employees By Role':
-                await promptQuestions(connection, viewEmployeesByRoleQuestions, viewEmployeesByRole);
+                await getResults(connection, viewEmployeesByRoleQuestions);
                 break;
             case 'View Total Utilized Budget of Department':
                 await viewTotalBudgetByDepartment(connection);

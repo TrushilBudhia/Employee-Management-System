@@ -3,6 +3,7 @@ const answerValidator = async (input) => {
     return (input === '' ? 'Invalid value' : true);
 }
 
+// Inquirer questions for adding an employee
 const employeeQuestions = [
     {
         type: 'input',

@@ -1,5 +1,3 @@
-//const inquirer = require('inquirer');
-
 const mainMenuOptions = [
     {
         type: 'list',
@@ -13,16 +11,5 @@ const mainMenuOptions = [
         ],
     },
 ]
-
-// Function prompting user to answer questions
-// async function promptInquirer() {
-//     try {
-//         const answers = await inquirer.prompt(mainMenuOptions);
-//         return answers;
-//     }
-//     catch (error) {
-//         console.error(`Inquirer has failed: ${error}`);
-//     }
-// }
 
 module.exports = mainMenuOptions;

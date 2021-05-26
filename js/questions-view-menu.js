@@ -8,7 +8,7 @@ const viewMenuOptions = [
             'View All Employees',
             'View All Employees By Department',
             'View All Employees By Manager',
-            'View All Roles',
+            'View All Employees By Role',
             'View Total Utilized Budget of Department',
             'Return to Main Menu'
         ],

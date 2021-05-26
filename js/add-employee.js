@@ -1,19 +1,19 @@
 async function addEmployee(connection, answers) {
-    console.log(answers)
-
-    const roleData = await connection.query(`SELECT id FROM role WHERE title='${answers.employeeRole}'`);
-    const roleId = roleData[0][0].id;
-
-    let managerId;
-    if(answers.employeeManager === 'None') {
-        managerId = null;
-    } 
-    else {
-        const managerData = await connection.query(`SELECT id FROM manager WHERE manager='${answers.employeeManager}'`);
-        managerId = managerData[0][0].id;
-    }
-    
     try {
+        console.log(answers)
+
+        const roleData = await connection.query(`SELECT id FROM role WHERE title='${answers.employeeRole}'`);
+        const roleId = roleData[0][0].id;
+
+        let managerId;
+        if(answers.employeeManager === 'None') {
+            managerId = null;
+        } 
+        else {
+            const managerData = await connection.query(`SELECT id FROM manager WHERE manager='${answers.employeeManager}'`);
+            managerId = managerData[0][0].id;
+        }
+        
         const employeeInsert = await connection.query('INSERT INTO employee SET ?',
             {
                 first_name: answers.employeeFirstName,
