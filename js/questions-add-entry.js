@@ -117,6 +117,7 @@ async function addRoleQuestions(connection) {
     }
 }
 
+// Exporting the functions
 module.exports = {
     addDepartmentQuestions,
     addEmployeeQuestions,

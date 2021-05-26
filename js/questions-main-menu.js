@@ -12,4 +12,5 @@ const mainMenuOptions = [
     },
 ]
 
+// Exporting the variable
 module.exports = mainMenuOptions;

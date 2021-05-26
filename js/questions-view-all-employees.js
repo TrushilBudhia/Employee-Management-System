@@ -67,6 +67,7 @@ async function viewEmployeesByRoleQuestions(connection) {
     }
 }
 
+// Exporting the functions
 module.exports = {
     viewEmployeesByDepartmentQuestions, 
     viewEmployeesByManagerQuestions,
