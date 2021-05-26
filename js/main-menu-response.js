@@ -1,7 +1,7 @@
-const { addMenu } = require('./questions-add-menu');
-const { viewMenu } = require('./questions-view-menu');
-const { updateMenu } = require('./questions-update-menu');
-const { deleteMenu } = require('./questions-delete-menu');
+const addMenuOptions = require('./questions-add-menu');
+const viewMenuOptions = require('./questions-view-menu');
+const updateMenuOptions = require('./questions-update-menu');
+const deleteMenuOptions = require('./questions-delete-menu');
 
 async function mainMenuResponse(actionSelected, connection) {
     try {

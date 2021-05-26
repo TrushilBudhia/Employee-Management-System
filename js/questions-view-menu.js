@@ -1,12 +1,9 @@
-const inquirer = require('inquirer');
-const menuResponse = require('./menu-response');
-
 // The view menu inquirer questions
 const viewMenuOptions = [
     {
         type: 'list',
         message: 'What would you like to view?',
-        name: 'viewMenu',
+        name: 'menu',
         choices: [
             'View All Employees',
             'View All Employees By Department',
@@ -18,18 +15,4 @@ const viewMenuOptions = [
     }
 ]
 
-// Function prompting user to answer questions in the view menu
-async function viewMenu(connection) {
-    try {
-        const answers = await inquirer.prompt(viewMenuOptions);
-        let actionSelected = answers.viewMenu;
-        menuResponse(actionSelected, connection);
-    }
-    catch (error) {
-        console.error(`Inquirer has failed: ${error}`);
-    }
-}
-
-module.exports = {
-    viewMenu
-}
+module.exports = viewMenuOptions;

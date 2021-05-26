@@ -1,4 +1,4 @@
-const inquirer = require('inquirer');
+//const inquirer = require('inquirer');
 
 const mainMenuOptions = [
     {
@@ -15,16 +15,14 @@ const mainMenuOptions = [
 ]
 
 // Function prompting user to answer questions
-async function promptInquirer() {
-    try {
-        const answers = await inquirer.prompt(mainMenuOptions);
-        return answers;
-    }
-    catch (error) {
-        console.error(`Inquirer has failed: ${error}`);
-    }
-}
+// async function promptInquirer() {
+//     try {
+//         const answers = await inquirer.prompt(mainMenuOptions);
+//         return answers;
+//     }
+//     catch (error) {
+//         console.error(`Inquirer has failed: ${error}`);
+//     }
+// }
 
-module.exports = {
-    promptInquirer
-}
+module.exports = mainMenuOptions;
