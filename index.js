@@ -7,13 +7,8 @@ const addMenuOptions = require('./js/questions-add-menu');
 const viewMenuOptions = require('./js/questions-view-menu');
 const updateMenuOptions = require('./js/questions-update-menu');
 const deleteMenuOptions = require('./js/questions-delete-menu');
-const employeeQuestions = require('./js/questions-add-employee');
-const departmentQuestions = require('./js/questions-add-department');
-const roleQuestions = require('./js/questions-add-role');
+const { addDepartmentQuestions, addEmployeeQuestions, addRoleQuestions } = require('./js/questions-add-entry');
 const { viewEmployeesByDepartmentQuestions, viewEmployeesByManagerQuestions, viewEmployeesByRoleQuestions } = require('./js/questions-view-all-employees');
-const addEmployee = require('./js/add-employee');
-const addDepartment = require('./js/add-department');
-const addRole = require('./js/add-role');
 const viewAllEmployees = require('./js/view-all-employees');
 
 async function promptQuestions(connection, questions, functionToCall) {
@@ -42,13 +37,13 @@ async function menuResponse(actionSelected, connection) {
     try {
         switch (actionSelected) {
             case 'Add Department':
-                await promptQuestions(connection, departmentQuestions, addDepartment);
+                await getResults(connection, addDepartmentQuestions);
                 break;
             case 'Add Employee':
-                await promptQuestions(connection, employeeQuestions, addEmployee);
+                await getResults(connection, addEmployeeQuestions);
                 break;
             case 'Add Role':
-                await promptQuestions(connection, roleQuestions, addRole);
+                await getResults(connection, addRoleQuestions);
                 break;
             case 'Remove Department':
                 await promptQuestions(connection, removeDepartmentQuestions, removeDepartment);
