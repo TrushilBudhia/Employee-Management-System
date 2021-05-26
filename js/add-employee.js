@@ -1,23 +1,18 @@
 const inquirer = require('inquirer');
-const employeeQuestions = require('./employee-questions');
+const departmentQuestions = require('./questions-add-department');
 
-async function addEmployee(connection) {
+async function addDepartment(connection) {
     try {
         const answers = await inquirer
-            .prompt(employeeQuestions)
+            .prompt(departmentQuestions)
             console.log(answers)
-
             try {
-                const employeeInsert = await connection.query('INSERT INTO employee SET ?',
+                const departmentInsert = await connection.query('INSERT INTO department SET ?',
                     {
-                        first_name: answers.employeeFirstName,
-                        last_name: answers.employeeLastName,
-                        role_id: Number(1),
-                        manager_id: Number(101)
+                        department: answers.departmentName,
                     }
                 )
-                console.log("Result:", employeeInsert[0]);
-                console.log('Employee has been added.');
+                console.log(`Added the ${answers.departmentName} department to the database.`);
                 connection.end();
             }
             catch (error) {
@@ -29,6 +24,4 @@ async function addEmployee(connection) {
     }
 }
 
-module.exports = {
-    addEmployee
-}
+module.exports = addDepartment;

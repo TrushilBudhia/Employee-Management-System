@@ -1,31 +1,46 @@
-DROP DATABASE IF EXISTS employeesDB;
+DROP DATABASE IF EXISTS employees_db;
 
-CREATE DATABASE employeesDB;
+CREATE DATABASE employees_db;
 
-CREATE TABLE employeesDB.department (
+CREATE TABLE employees_db.department (
   id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(30) NOT NULL,
+  department VARCHAR(30) NOT NULL,
   PRIMARY KEY (id)
 );
 
-CREATE TABLE employeesDB.role (
+CREATE TABLE employees_db.role (
   id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(30) NOT NULL,
-  salary DECIMAL,
+  salary DECIMAL (8),
   department_id INT,
   PRIMARY KEY (id)
 );
 
-CREATE TABLE employeesDB.employee (
+CREATE TABLE employees_db.employee (
   id INT NOT NULL AUTO_INCREMENT,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
   role_id INT,
-  manager_id INT,
+  manager_id INT NULL,
   PRIMARY KEY (id)
 );
 
-INSERT INTO employeesDB.employee (first_name, last_name, role_id, manager_id)
-VALUES ("Test", "Code", 1, 15); 
+CREATE TABLE employees_db.manager (
+  id INT NOT NULL AUTO_INCREMENT,
+  manager VARCHAR(60) NOT NULL,
+  PRIMARY KEY (id)
+);
 
-SELECT * FROM employeesDB.employee LIMIT 100;
+SELECT * FROM employees_db.employee LIMIT 100;
+
+SELECT employee.id, first_name, last_name, title, department, salary, manager
+FROM employees_db.employee 
+LEFT JOIN role ON employee.role_id = role.id
+LEFT JOIN department ON role.department_id = department.id
+LEFT JOIN manager ON employee.manager_id = manager.id;
+
+
+SELECT first_name, last_name FROM employees_db.employee WHERE manager_id;
+
+SELECT id FROM role WHERE title='Accountant';
+SELECT id FROM manager WHERE manager='Fan Ileming';

@@ -24,6 +24,7 @@ const employeeQuestions = [
             'Account Manager',
             'Accountant',
             'Client Support',
+            'Human Resource Manager',
             'Lawyer',
             'Lead Engineer',
             'Legal Team Lead',
