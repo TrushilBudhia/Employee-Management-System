@@ -29,7 +29,7 @@ The application uses the console.table, dotenv, inquirer, and mysql2 package mod
     ```
     
 ## Usage
-To begin the application, navigate to the root directory for the project in your preferred terminal and run the following code:
+Once the host, port, user, password and database details have been provided to the connection and the database has been created with the tables and seed data, navigate to the root directory for the project in your preferred terminal and run the following code:
 ```js
 npm start
 ```
