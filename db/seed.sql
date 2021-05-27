@@ -41,7 +41,7 @@ VALUES
   ('Gorothy', 'Dale', 10, null), -- id of 10, no manager
   ('Fan', 'Ileming', 1, null), -- id of 11, no manager
   ('Jndiana', 'Iones', 2, 11), -- id of 12
-  ('Pinnie', 'the Wooh', 3, 10), -- id of 13
+  ('Pinnie', 'theWooh', 3, 10), -- id of 13
   ('Oeia', 'Lrgana', 6, 4), -- id of 14
   ('Rohn', 'Jambo', 14, 2); -- id of 15
 

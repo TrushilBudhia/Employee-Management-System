@@ -1,6 +1,5 @@
 async function addEmployee(connection, answers) {
     try {
-        console.log(answers)
         // Using the role chosen by the user to determine the role id
         const roleData = await connection.query(`SELECT id FROM role WHERE title='${answers.employeeRole}'`);
         const roleId = roleData[0][0].id;

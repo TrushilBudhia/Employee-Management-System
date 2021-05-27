@@ -116,6 +116,24 @@ async function mainMenuResponse(actionSelected, connection) {
     }
 }
 
+async function printWelcome() {
+    try {
+        console.log(`
+    ,-------------------------------------------------,
+    |     __    __     _                              |
+    |    / / /\\ \\ \\___| | ___ ___  _ __ ___   ___     |
+    |    \\ \\/  \\/ / _ \\ |/ __/ _ \\| '_ \` _ \\ / _ \\    |
+    |     \\  /\\  /  __/ | (_| (_) | | | | | |  __/    |
+    |      \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|    |
+    |                                                 |
+    '-------------------------------------------------'
+        `)
+    }
+    catch (error) {
+        console.error(error.message);
+    }
+}
+
 // Function to initiate the application
 async function init() {
     try {
@@ -148,4 +166,5 @@ async function init() {
 }
 
 // Invoking the function to initiate the application
+printWelcome();
 init();

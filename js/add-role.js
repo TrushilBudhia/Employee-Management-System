@@ -1,5 +1,4 @@
 async function addRole(connection, answers) {
-    console.log(answers)
     // Using the department chosen by the user to determine the department id
     const departmentData = await connection.query(`SELECT id FROM department WHERE department='${answers.roleDepartment}'`);
     const departmentId = departmentData[0][0].id;
