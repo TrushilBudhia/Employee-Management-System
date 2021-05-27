@@ -8,14 +8,14 @@ async function addEmployee(connection, answers) {
         // If the user has select 'None' for manager, the managerId will be assigned a value of null
         // Otherwise, the managerId value is determined by the id number linked to the manager
         let managerId;
-        if(answers.employeeManager === 'None') {
+        if (answers.employeeManager === 'None') {
             managerId = null;
-        } 
+        }
         else {
             const managerData = await connection.query(`SELECT id FROM manager WHERE manager='${answers.employeeManager}'`);
             managerId = managerData[0][0].id;
         }
-        
+
         // Inserting a new row of data into the employee table based on the data provided by the user
         const employeeInsert = await connection.query('INSERT INTO employee SET ?',
             {
@@ -23,6 +23,11 @@ async function addEmployee(connection, answers) {
                 last_name: answers.employeeLastName,
                 role_id: roleId,
                 manager_id: managerId
+            }
+        )
+        const managerInsert = await connection.query('INSERT INTO manager SET ?',
+            {
+                manager: answers.employeeFirstName + ' ' + answers.employeeLastName
             }
         )
         //console.log("Result:", employeeInsert[0]);

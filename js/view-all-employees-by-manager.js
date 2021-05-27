@@ -15,7 +15,7 @@ async function viewEmployeesByManager(connection, answers) {
         // If statement to check if the employee has anyone they manage
         // If the result is not undefined, log the results in a console table
         // If the result is undefined, log a statement advising the user that the employee does not manage anyone
-        if(employeeResults[0][0] !== undefined) {
+        if (employeeResults[0][0] !== undefined) {
             console.table(employeeResults[0]);
         }
         else {

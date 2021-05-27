@@ -6,13 +6,14 @@ const mainMenuOptions = require('./js/questions-main-menu');
 const { addMenuOptions, deleteMenuOptions, updateMenuOptions, viewMenuOptions } = require('./js/questions-sub-menu');
 const { addDepartmentQuestions, addEmployeeQuestions, addRoleQuestions } = require('./js/questions-add-entry');
 const { viewEmployeesByDepartmentQuestions, viewEmployeesByManagerQuestions, viewEmployeesByRoleQuestions } = require('./js/questions-view-all-employees');
+const { updateEmployeeManagerQuestions, updateEmployeeRoleQuestions } = require('./js/questions-update-entry');
 const viewAllEmployees = require('./js/view-all-employees');
 
 async function promptQuestions(connection, questions, functionToCall) {
     try {
         const answers = await inquirer
             .prompt(questions)
-            await functionToCall(connection, answers);
+        await functionToCall(connection, answers);
     }
     catch (error) {
         console.error(`Inquirer has failed: ${error}`);
@@ -54,11 +55,11 @@ async function menuResponse(actionSelected, connection) {
             case 'Return to Main Menu':
                 await init();
                 break;
-            case 'Update Employee Role':
-                await promptQuestions(connection, updateEmployeeRoleQuestions, updateEmployeeRole);
-                break;
             case 'Update Employee Manager':
-                await promptQuestions(connection, updateEmployeeManagerQuestions, updateEmployeeManager);
+                await getResults(connection, updateEmployeeManagerQuestions);
+                break;
+            case 'Update Employee Role':
+                await getResults(connection, updateEmployeeRoleQuestions);
                 break;
             case 'View All Employees':
                 await getResults(connection, viewAllEmployees);
@@ -122,7 +123,7 @@ async function mainMenuResponse(actionSelected, connection) {
 }
 
 // Function to initiate the application
-async function init () {
+async function init() {
     try {
         const connection = await mysql.createConnection({
             // Details to establish connection to the server and the MySQL database

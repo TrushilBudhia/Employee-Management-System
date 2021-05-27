@@ -39,7 +39,6 @@ LEFT JOIN role ON employee.role_id = role.id
 LEFT JOIN department ON role.department_id = department.id
 LEFT JOIN manager ON employee.manager_id = manager.id;
 
-
 SELECT first_name, last_name FROM employees_db.employee WHERE manager_id;
 
 SELECT id FROM role WHERE title='Accountant';
