@@ -3,12 +3,17 @@ const addDepartment = require('./add-department');
 const addEmployee = require('./add-employee');
 const addRole = require('./add-role');
 
+// Function to validate user input is not an empty string
+const answerValidator = (input) => {
+    return (input === '' ? 'Invalid value' : true);
+}
+// Function to validate user input is not not a number (NaN)
+const answerNumberValidator = (input) => {
+    return (input === '' || isNaN(input) || input < 0 ? 'Invalid value' : true);
+}
+
 async function addDepartmentQuestions(connection) {
     try {
-        // Function to validate user input is not an empty string
-        const answerValidator = async (input) => {
-            return (input === '' ? 'Invalid value' : true);
-        }
         // Inquirer questions for adding a department
         const answers = await inquirer.prompt([
             {
@@ -37,10 +42,6 @@ async function addEmployeeQuestions(connection) {
         // Adding the None option to the manager array in case the employee needs to be updated to have no manager
         managerArray.push('None');
 
-        // Function to validate user input is not an empty string
-        const answerValidator = async (input) => {
-            return (input === '' ? 'Invalid value' : true);
-        }
         // Inquirer questions for adding an employee
         const answers = await inquirer.prompt([
             {
@@ -82,14 +83,6 @@ async function addRoleQuestions(connection) {
         const departmentData = await connection.query(`SELECT department FROM department`);
         const departmentArray = departmentData[0].map(department => department.department);
 
-        // Function to validate user input is not an empty string
-        const answerValidator = async (input) => {
-            return (input === '' ? 'Invalid value' : true);
-        }
-        // Function to validate user input is not not a number (NaN)
-        const answerNumberValidator = async (input) => {
-            return (isNaN(input) || input < 0 ? 'Invalid value' : true);
-        }
         // Inquirer questions for adding a role
         const answers = await inquirer.prompt([
             {
