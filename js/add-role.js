@@ -5,7 +5,7 @@ async function addRole(connection, answers) {
 
     try {
         // Inserting a new row of data into the role table based on the data provided by the user
-        const roleInsert = await connection.query('INSERT INTO role SET ?',
+        await connection.query('INSERT INTO role SET ?',
             {
                 title: answers.roleTitle,
                 salary: answers.roleSalary,

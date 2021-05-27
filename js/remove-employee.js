@@ -1,11 +1,11 @@
 async function removeEmployee(connection, answers) {
     try {
         // Removing the employee selected by the user from the database
-        const removeEmployeeData = await connection.query(`
+        await connection.query(`
             DELETE FROM employee 
             WHERE first_name = '${answers.employeeFirstName}' and last_name = '${answers.employeeLastName}'
         `)
-        const removeManagerData = await connection.query(`DELETE FROM manager WHERE ?`,
+        await connection.query(`DELETE FROM manager WHERE ?`,
             {
                 manager: answers.employeeFirstName + ' ' + answers.employeeLastName
             }

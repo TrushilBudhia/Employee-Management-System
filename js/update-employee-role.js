@@ -5,7 +5,7 @@ async function updateEmployeeRole(connection, answers) {
         roleId = roleData[0][0].id;
 
         // Updating the employee manager details as selected by the user
-        const updateEmployeeData = await connection.query(`UPDATE employee SET ? WHERE first_name='${answers.employeeFirstName}' and last_name='${answers.employeeLastName}'`,
+        await connection.query(`UPDATE employee SET ? WHERE first_name='${answers.employeeFirstName}' and last_name='${answers.employeeLastName}'`,
             {
                 role_id: roleId
             }

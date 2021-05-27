@@ -1,7 +1,7 @@
 async function removeRole(connection, answers) {
     try {
         // Removing the role selected by the user from the database
-        const removeRoleData = await connection.query(`DELETE FROM role WHERE ?`,
+        await connection.query(`DELETE FROM role WHERE ?`,
             {
                 title: answers.role,
             }

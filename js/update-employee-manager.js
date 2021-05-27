@@ -12,7 +12,7 @@ async function updateEmployeeManager(connection, answers) {
         }
 
         // Updating the employee manager details as selected by the user
-        const updateEmployeeData = await connection.query(`UPDATE employee SET ? WHERE first_name='${answers.employeeFirstName}' and last_name='${answers.employeeLastName}'`,
+        await connection.query(`UPDATE employee SET ? WHERE first_name='${answers.employeeFirstName}' and last_name='${answers.employeeLastName}'`,
             {
                 manager_id: managerId
             }

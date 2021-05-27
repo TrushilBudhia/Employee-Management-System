@@ -1,7 +1,7 @@
 async function removeDepartment(connection, answers) {
     try {
         // Removing the department selected by the user from the database
-        const removeDepartmentData = await connection.query(`DELETE FROM department WHERE ?`,
+        await connection.query(`DELETE FROM department WHERE ?`,
             {
                 department: answers.department,
             }

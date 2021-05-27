@@ -1,7 +1,7 @@
 async function addDepartment(connection, answers) {
     try {
         // Inserting a new row of data into the department table based on the data provided by the user
-        const departmentInsert = await connection.query('INSERT INTO department SET ?',
+        await connection.query('INSERT INTO department SET ?',
             {
                 department: answers.departmentName,
             }
