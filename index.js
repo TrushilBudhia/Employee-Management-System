@@ -5,22 +5,13 @@ const mysql = require('mysql2/promise');
 const mainMenuOptions = require('./js/questions-main-menu');
 const { addMenuOptions, deleteMenuOptions, updateMenuOptions, viewMenuOptions } = require('./js/questions-sub-menu');
 const { addDepartmentQuestions, addEmployeeQuestions, addRoleQuestions } = require('./js/questions-add-entry');
-const { viewEmployeesByDepartmentQuestions, viewEmployeesByManagerQuestions, viewEmployeesByRoleQuestions } = require('./js/questions-view-all-employees');
+const { viewEmployeesByDepartmentQuestions, viewEmployeesByManagerQuestions, viewEmployeesByRoleQuestions, viewTotalUtilizedBudgetOfDepartmentQuestions } = require('./js/questions-view-entry');
 const { updateEmployeeManagerQuestions, updateEmployeeRoleQuestions } = require('./js/questions-update-entry');
+const { removeDepartmentQuestions, removeEmployeeQuestions, removeRoleQuestions } = require('./js/questions-delete-entry');
 const viewAllEmployees = require('./js/view-all-employees');
 
-async function promptQuestions(connection, questions, functionToCall) {
-    try {
-        const answers = await inquirer
-            .prompt(questions)
-        await functionToCall(connection, answers);
-    }
-    catch (error) {
-        console.error(`Inquirer has failed: ${error}`);
-    }
-    init();
-}
-
+// Function to invoke another function that loads the next inquirer questions
+// The questions asked will change depending on the selection the user makes when deciding what to add, view, update or delete
 async function getResults(connection, promptFunction) {
     try {
         await promptFunction(connection);
@@ -31,6 +22,7 @@ async function getResults(connection, promptFunction) {
     await init();
 }
 
+// Function that handles the selection by the user in the add, view, update and delete menus
 async function menuResponse(actionSelected, connection) {
     try {
         switch (actionSelected) {
@@ -44,13 +36,13 @@ async function menuResponse(actionSelected, connection) {
                 await getResults(connection, addRoleQuestions);
                 break;
             case 'Remove Department':
-                await promptQuestions(connection, removeDepartmentQuestions, removeDepartment);
+                await getResults(connection, removeDepartmentQuestions);
                 break;
             case 'Remove Employee':
-                await promptQuestions(connection, removeEmployeeQuestions, removeEmployee);
+                await getResults(connection, removeEmployeeQuestions);
                 break;
             case 'Remove Role':
-                await promptQuestions(connection, removeRoleQuestions, removeRole);
+                await getResults(connection, removeRoleQuestions);
                 break;
             case 'Return to Main Menu':
                 await init();
@@ -74,7 +66,7 @@ async function menuResponse(actionSelected, connection) {
                 await getResults(connection, viewEmployeesByRoleQuestions);
                 break;
             case 'View Total Utilized Budget of Department':
-                await viewTotalBudgetByDepartment(connection);
+                await getResults(connection, viewTotalUtilizedBudgetOfDepartmentQuestions);
                 break;
             default:
                 console.log('An error has occurred. Process End');
@@ -86,6 +78,7 @@ async function menuResponse(actionSelected, connection) {
     }
 }
 
+// Function to promt inquirer with the questions reflecting the menu option selected by the user
 async function menuSelection(connection, menuOption) {
     try {
         const answers = await inquirer.prompt(menuOption);
@@ -97,6 +90,7 @@ async function menuSelection(connection, menuOption) {
     }
 }
 
+// Function to direct the user to another menu depending on the selection they have made
 async function mainMenuResponse(actionSelected, connection) {
     try {
         switch (actionSelected) {

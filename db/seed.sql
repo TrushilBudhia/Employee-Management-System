@@ -23,7 +23,8 @@ VALUES
   ('Sales Lead', 100000, 6), -- id of 10
   ('Salesperson', 80000, 6), -- id of 11
   ('Software Engineer', 85000, 1), -- id of 12
-  ('Lead Developer', 90000, 4); -- id of 13
+  ('Lead Developer', 110000, 4), -- id of 13
+  ('Web Developer', 90000, 4); -- id of 14
 
 INSERT INTO
   employees_db.employee (first_name, last_name, role_id, manager_id)
@@ -40,7 +41,9 @@ VALUES
   ('Gorothy', 'Dale', 10, null), -- id of 10, no manager
   ('Fan', 'Ileming', 1, null), -- id of 11, no manager
   ('Jndiana', 'Iones', 2, 11), -- id of 12
-  ('Pinnie', 'the Wooh', 3, 10); -- id of 13
+  ('Pinnie', 'the Wooh', 3, 10), -- id of 13
+  ('Oeia', 'Lrgana', 6, 4), -- id of 14
+  ('Rohn', 'Jambo', 14, 2); -- id of 15
 
 INSERT INTO
   employees_db.manager (manager)
@@ -57,6 +60,8 @@ VALUES
   ('Gorothy Dale'), -- id of 10
   ('Fan Ileming'), -- id of 11
   ('Jndiana Iones'), -- id of 12
-  ('Pinnie the Wooh'); -- id of 13
+  ('Pinnie the Wooh'), -- id of 13
+  ('Oeia Lrgana'), -- id of 14
+  ('Rohn Jambo'); -- id of 15
 
   

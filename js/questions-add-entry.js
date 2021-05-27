@@ -34,6 +34,8 @@ async function addEmployeeQuestions(connection) {
         const roleArray = roleData[0].map(role => role.title);
         const managerData = await connection.query(`SELECT manager FROM manager`);
         const managerArray = managerData[0].map(manager => manager.manager);
+        // Adding the None option to the manager array in case the employee needs to be updated to have no manager
+        managerArray.push('None');
 
         // Function to validate user input is not an empty string
         const answerValidator = async (input) => {

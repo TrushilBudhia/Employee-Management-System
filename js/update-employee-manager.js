@@ -1,6 +1,5 @@
 async function updateEmployeeManager(connection, answers) {
     try {
-        console.log(answers)
         // If the user has select 'None' for manager, the managerId will be assigned a value of null
         // Otherwise, the managerId value is determined by the id number linked to the manager selected by the user
         let managerId;

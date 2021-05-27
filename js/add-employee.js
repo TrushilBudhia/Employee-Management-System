@@ -17,7 +17,7 @@ async function addEmployee(connection, answers) {
         }
 
         // Inserting a new row of data into the employee table based on the data provided by the user
-        const employeeInsert = await connection.query('INSERT INTO employee SET ?',
+        const employeeInsert = await connection.query(`INSERT INTO employee SET ?`,
             {
                 first_name: answers.employeeFirstName,
                 last_name: answers.employeeLastName,
@@ -25,7 +25,7 @@ async function addEmployee(connection, answers) {
                 manager_id: managerId
             }
         )
-        const managerInsert = await connection.query('INSERT INTO manager SET ?',
+        const managerInsert = await connection.query(`INSERT INTO manager SET ?`,
             {
                 manager: answers.employeeFirstName + ' ' + answers.employeeLastName
             }

@@ -61,8 +61,8 @@ const viewMenuOptions = [
 
 // Exporting the variables
 module.exports = {
-    addMenuOptions, 
-    deleteMenuOptions, 
-    updateMenuOptions, 
+    addMenuOptions,
+    deleteMenuOptions,
+    updateMenuOptions,
     viewMenuOptions
 }

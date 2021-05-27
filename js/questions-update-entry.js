@@ -8,7 +8,7 @@ async function updateEmployeeManagerQuestions(connection) {
         const employeeData = await connection.query(`SELECT * FROM employee`);
         const employeeArray = employeeData[0].map(employee => employee.first_name + ' ' + employee.last_name);
 
-        // Inquirer questions for adding an employee
+        // Inquirer questions for updating an employee manager
         const employeeChosen = await inquirer.prompt([
             {
                 type: 'list',
@@ -41,6 +41,7 @@ async function updateEmployeeManagerQuestions(connection) {
         // Invoking the function to insert the data to the database
         await updateEmployeeManager(connection, answers);
     }
+    // If there is an error, it will be logged in the console
     catch (error) {
         console.error(error);
     }
@@ -52,7 +53,7 @@ async function updateEmployeeRoleQuestions(connection) {
         const employeeData = await connection.query(`SELECT * FROM employee`);
         const employeeArray = employeeData[0].map(employee => employee.first_name + ' ' + employee.last_name);
 
-        // Inquirer questions for adding an employee
+        // Inquirer questions for updating an employee role
         const employeeChosen = await inquirer.prompt([
             {
                 type: 'list',
@@ -92,5 +93,4 @@ async function updateEmployeeRoleQuestions(connection) {
 module.exports = {
     updateEmployeeManagerQuestions,
     updateEmployeeRoleQuestions
-
 }

@@ -1,6 +1,5 @@
 async function updateEmployeeRole(connection, answers) {
     try {
-        console.log(answers)
         // The roleId value is determined by the id number linked to the role selected by the user
         const roleData = await connection.query(`SELECT id FROM role WHERE title='${answers.employeeRoleSelect}'`);
         roleId = roleData[0][0].id;
