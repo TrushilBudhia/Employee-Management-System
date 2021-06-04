@@ -37,7 +37,7 @@ npm start
 ## Assets
 The link to a guide video that demonstrates the applications functionality: [Guide Video](https://drive.google.com/file/d/1o6VAyP1vXRAvibeZPnmTGCw052_EncYG/view?usp=sharing)
 
-The following images shows the functionality of the application:
+The following images show the functionality of the application:
 
 ![Employee Management System animated gif of the applications functionality.](./assets/images/Employee-Management-System-Preview.gif)
 
